@@ -7,34 +7,42 @@ let age:number;
 age=10;
 let ids: number[] = [1,2,3,4];
 
+
 //tuple 
 //in tuple we can decide the exact type inside array
 let person: [number,string,boolean] = [1,"hello",true]
 //tuple array
 let employee:[number,string][];
 employee = [
-    [1,'ram'],
+    [1,'ram'],  
     [2,'shyam'],
     [3,'hari'],
     [4,'sita'],
 ]
 
+
 //union
+// TypeScript allows us to use more than one data type for a variable or a function parameter. This is called union type.
+
+
 let pid : number | string;
 pid = 1;
 pid = "hello string";
 
-//object
 
+
+//object
 type User ={
     name:string,
     age:number
 }
 
+
 let user:User ={
     name:"abc",
     age:20
 }
+
 
 //type assertion
 
@@ -57,7 +65,8 @@ function log(message: number | string): void{
 }
 
 //interfaces
-//interfaces and type are same but in interfaces we cant use union 
+//interfaces and type are same but in interfaces we cant use union
+//we can create two interface with same name and use it but we cant use it on type 
 interface myInterface  {
     height:number | string,
     weight:string,
@@ -66,7 +75,7 @@ interface myInterface  {
 
 let obj1:myInterface ={
     height:13,
-    weight:"prakash",
+    weight:"prakash"
 }
 //here length may not occour in object
 
@@ -120,6 +129,30 @@ function getArray<T>(item:T[]):T[]{
 
 let numArray = getArray<number>([1,2,3,4,5]);
 let stringArray = getArray<string>(["hello","world","i","am","testing"]);
+
+
+//interface example in details to learn
+
+interface UserDetails{
+    name:string,
+    age:number,
+    speak(a:number):void,
+    spend(a:number):number
+}
+
+const myNewUser:UserDetails = {
+    name:"prakash",
+    age:20,
+    speak(p:number):void{console.log("hello world")},
+    spend(q:number):number{return q}
+}
+
+function allUser(allUsers:UserDetails){
+        console.log(allUsers.name);
+}
+
+allUser(myNewUser);
+
 
 
 
